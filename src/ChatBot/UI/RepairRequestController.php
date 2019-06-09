@@ -8,7 +8,6 @@ use App\ChatBot\Application\RepairRequestAcceptanceService;
 use App\ChatBot\Infrastructure\QuestionsRepository;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -250,13 +249,12 @@ class RepairRequestController extends AbstractController
             );
 
             $greetingActions = [
-                'Задать вопрос',
-                'Отправить заявку',
-                'Оставить жалобу/предложение',
+                '<a href="https://t.me/@"></a>',
             ];
 
             $result = [
-                'text' => "Принято, $message. Ваша заявка зарегистрирована. Номер заявки $taskNumber",
+                'text' => "Принято, $message. Ваша заявка зарегистрирована. Номер заявки $taskNumber.".
+                    'Хотите отслеживать статус заявки, присоединяйтесь к нашему чат <a href="https://t.me/@digitalp_bot">боту</a>.',
                 'actions' => $greetingActions,
             ];
 
