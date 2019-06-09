@@ -9,3 +9,7 @@ api_chatbot_repare_request:
 api_chatbot_reply_to_message:
     path: /api/chat/message
     controller: App\ChatBot\UI\RepairRequestController::replyToMessage
+
+api_chatbot_handshake:
+    path: /api/chat/handshake
+    controller: App\ChatBot\UI\RepairRequestController::handshake
