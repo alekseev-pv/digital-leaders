@@ -5,3 +5,7 @@
 api_chatbot_repare_request:
     path: /api/request
     controller: App\ChatBot\UI\RepairRequestController::acceptRepairRequest
+
+api_chatbot_reply_to_message:
+    path: /api/chat/message
+    controller: App\ChatBot\UI\RepairRequestController::replyToMessage
