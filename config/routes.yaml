@@ -1,3 +1,7 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+api_chatbot_repare_request:
+    path: /api/request
+    controller: App\ChatBot\UI\RepairRequestController::acceptRepairRequest
