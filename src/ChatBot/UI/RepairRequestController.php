@@ -74,17 +74,7 @@ class RepairRequestController extends AbstractController
     {
         $session = new Session(new NativeSessionStorage(), new AttributeBag());
         $session->start();
-        $session->save();
-
         $jsonResponse = new JsonResponse([], Response::HTTP_OK);
-        $jsonResponse->headers->setCookie(
-            new Cookie(
-                $session->getName(),
-                $session->getId(),
-                \DateTime::createFromFormat('d-m-Y', '01-01-2029'), '/', $_SERVER['REQUEST_URI'], true
-            )
-        );
-
         $jsonResponse->setData(['token' => $session->getId()]);
 
         return $jsonResponse;
