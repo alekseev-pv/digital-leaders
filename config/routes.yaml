@@ -2,7 +2,6 @@
 #    path: /
 #    controller: App\Controller\DefaultController::index
 
-api_webhook_repare_request:
-    path: /api/webhook/repare-request
-    controller: App\Controller\WebHookController::requestRepair
-    method: [POST]
+api_chatbot_repare_request:
+    path: /api/request
+    controller: App\ChatBot\UI\RepairRequestController::acceptRepairRequest
