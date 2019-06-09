@@ -85,8 +85,6 @@ class RepairRequestController extends AbstractController
             throw new \RuntimeException();
         }
 
-        $token = $request->headers->get('X-Chat-Token');
-
     }
 
 
@@ -112,7 +110,6 @@ class RepairRequestController extends AbstractController
             $greetingActions = [
                 'Задать вопрос',
                 'Отправить заявку',
-                'Оставить жалобу/предложение',
             ];
             $result = [
                 'text' => 'Привет, я бот службы ЖКХ мастер. Буду рад помочь.',
