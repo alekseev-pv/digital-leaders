@@ -64,7 +64,7 @@ return $state;
 class TestBot extends TelegramBot{
 
 	//protected $token = "";
-	protected $token = "695724004:AAF0jMkSyD5ZBLvE1QItfr4OSnxLwIP9-k0";
+	protected $token = "";
 
 	/**
 	 * Fill you bot name if you want to use it in groups
