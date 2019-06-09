@@ -247,7 +247,7 @@ class RepairRequestController extends AbstractController
 
             $result = [
                 'text' => "Принято, $message. Ваша заявка зарегистрирована. Номер заявки $taskNumber.".
-                    'Хотите отслеживать статус заявки, присоединяйтесь к нашему чат <a href="https://t.me/@digitalp_bot">боту</a>.',
+                    'Хотите отслеживать статус заявки, присоединяйтесь к нашему чат <a href="https://tele.click/digitalp_bot">боту</a>.',
                 'actions' => [],
             ];
 
