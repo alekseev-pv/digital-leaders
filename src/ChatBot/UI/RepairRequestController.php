@@ -5,6 +5,7 @@ namespace App\ChatBot\UI;
 
 
 use App\ChatBot\Application\RepairRequestAcceptanceService;
+use App\ChatBot\Infrastructure\QuestionsRepository;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,15 +27,21 @@ class RepairRequestController
      * @var LoggerInterface
      */
     private $logger;
+    /**
+     * @var QuestionsRepository
+     */
+    private $questionsRepository;
 
     public function __construct(
         RepairRequestAcceptanceService $acceptanceService,
         DecoderInterface $decoder,
-        LoggerInterface $logger
+        LoggerInterface $logger,
+        QuestionsRepository $questionsRepository
     ) {
         $this->acceptanceService = $acceptanceService;
         $this->decoder = $decoder;
         $this->logger = $logger;
+        $this->questionsRepository = $questionsRepository;
     }
 
     public function acceptRepairRequest(Request $request): Response
@@ -60,6 +67,7 @@ class RepairRequestController
 
     public function replyToMessage(Request $request): Response
     {
+        // todo fix raw strings. Only for mvp version.
         $content = $request->getContent();
         $this->logger->debug('Message came to api', [$content]);
         $payload = $this->decoder->decode($content, 'json');
@@ -80,10 +88,7 @@ class RepairRequestController
             return new JsonResponse($arr, Response::HTTP_OK);
         }
 
-        $actions = [
-            'Когда планируют отключить горячую воду?' => 'В понедельник 12.09.2019',
-            'Когда будет кап ремонт?' => 'Планируемая дата капитального ремонта: март 2021 года.',
-        ];
+        $actions = $this->questionsRepository->all();
 
         $isOneOfKnownQuestions = array_key_exists($message, $actions);
         if ('Задать вопрос' === $message) {
