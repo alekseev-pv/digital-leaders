@@ -231,7 +231,7 @@ class RepairRequestController extends AbstractController
 
             $result = [
                 'text' => "Принято, $message. На какой адрес вызов?",
-                'actions' => $jobTypes,
+                'actions' => [],
             ];
 
             return new JsonResponse($result, Response::HTTP_OK);
@@ -248,14 +248,10 @@ class RepairRequestController extends AbstractController
                 $sessionData['job-type']
             );
 
-            $greetingActions = [
-                '<a href="https://t.me/@"></a>',
-            ];
-
             $result = [
                 'text' => "Принято, $message. Ваша заявка зарегистрирована. Номер заявки $taskNumber.".
                     'Хотите отслеживать статус заявки, присоединяйтесь к нашему чат <a href="https://t.me/@digitalp_bot">боту</a>.',
-                'actions' => $greetingActions,
+                'actions' => [],
             ];
 
             $sessionData['repair_request_started'] = false;
